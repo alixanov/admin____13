@@ -3,6 +3,8 @@ import { SettingOutlined } from '@ant-design/icons'
 import FormField from '../FormField'
 import DndModal from '../DndModal'
 import { replaceQueryFields } from '../../utils/utils'
+import Static from '../Static/Static'
+
 
 const { Text } = Typography
 
@@ -93,10 +95,10 @@ export default function DatasetForm({
             {...field.props}
           />
         ))}
-        {Object.keys(initialValues).length ? <iframe src='https://static-seven-pi.vercel.app/' title='html' style={{
-          border: "none",
-          minHeight: 500
-        }} width={'100%'} /> : null}
+        {Object.keys(initialValues).length ? <Static /> : null}
+
+
+
 
       </Form>
     </DndModal>
