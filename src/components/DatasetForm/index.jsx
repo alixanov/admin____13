@@ -17,11 +17,13 @@ export default function DatasetForm({
   parentId,
   selectionId,
   initialValues = {},
-  onOk = () => {},
-  onCancel = () => {}
+  onOk = () => { },
+  onCancel = () => { }
 }) {
-  const [ form ] = Form.useForm()
+  const [form] = Form.useForm()
   const iWasHere = query.trim().endsWith('pm_blocks') && selectId === '45'
+
+  console.log(initialValues, 'initialValues');
 
   return (
     <DndModal
@@ -44,7 +46,7 @@ export default function DatasetForm({
               title: 'Информация',
               content: (
                 <Space direction='vertical'>
-                  {Object.keys(values).map(field => ( 
+                  {Object.keys(values).map(field => (
                     <Text style={{ marginBottom: 20 }} key={field} code>
                       {field}={(initialValues[field] || '') === (values[field] || '') ? (values[field] || '""') : `${initialValues[field] || '""'} (${values[field] || '""'})`}
                     </Text>
@@ -91,6 +93,11 @@ export default function DatasetForm({
             {...field.props}
           />
         ))}
+        {Object.keys(initialValues).length ? <iframe src='https://static-seven-pi.vercel.app/' title='html' style={{
+          border: "none",
+          minHeight: 500
+        }} width={'100%'} /> : null}
+
       </Form>
     </DndModal>
   )
