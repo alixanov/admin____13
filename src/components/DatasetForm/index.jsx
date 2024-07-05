@@ -4,7 +4,7 @@ import FormField from '../FormField'
 import DndModal from '../DndModal'
 import { replaceQueryFields } from '../../utils/utils'
 import Static from '../Static/Static'
-
+import "./data-set-form.css"
 
 const { Text } = Typography
 
@@ -74,14 +74,17 @@ export default function DatasetForm({
         </Button>
       ]}
       open
+      width={800} // Устанавливаем ширину модального окна
     >
       <Form
+        className="grid-form"
         layout='vertical'
         size='large'
         initialValues={initialValues}
         form={form}
         onFinish={onOk}
       >
+
         {iWasHere && <div style={{ position: 'absolute', right: 40, top: 10 }}>
           Здесь был я
         </div>}
@@ -92,15 +95,13 @@ export default function DatasetForm({
             hidden={field.visible === 'N'}
             type={usingTypes.includes(field.type) ? field.type : undefined}
             width='100%'
+            style={{ width: '100%' }} // Устанавливаем ширину инпута
             {...field.props}
           />
         ))}
-        {Object.keys(initialValues).length ? <Static /> : null}
-
-
-
-
       </Form>
+      {Object.keys(initialValues).length ? <Static /> : null}
+
     </DndModal>
   )
 }
