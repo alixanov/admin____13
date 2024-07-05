@@ -74,7 +74,7 @@ export default function DatasetForm({
         </Button>
       ]}
       open
-      width={800} // Устанавливаем ширину модального окна
+      width="100%" // Устанавливаем ширину модального окна на 100%
     >
       <Form
         className="grid-form"
@@ -100,6 +100,7 @@ export default function DatasetForm({
           />
         ))}
       </Form>
+      Я тут был ""
       {Object.keys(initialValues).length ? <Static /> : null}
 
     </DndModal>
